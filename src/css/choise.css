@@ -1,0 +1,25 @@
+/* .choices__inner {
+  position: relative;
+  border: 1px solid #CCB26E !important;
+  border-radius: 10px !important;
+
+  z-index: 2;
+}
+.choices__input, .choices__input--cloned {
+  display: none !important;
+}
+
+.choices__list--dropdown .choices__placeholder {
+  display: none !important;
+}
+
+.choices__list--dropdown {
+  padding-top: 45px;
+  top: 0;
+  border: 1px solid #CCB26E !important;
+  border-radius: 10px;
+  z-index: 1;
+}
+.choices__list--single {
+  padding: 4px 4px;
+} */
