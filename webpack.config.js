@@ -10,7 +10,7 @@ const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
-const ASSET_PATH = process.env.ASSET_PATH || '/';
+const ASSET_PATH = process.env.ASSET_PATH || './';
 
 const optimization = () => {
   const config =  {
@@ -57,8 +57,9 @@ module.exports = {
   },
   optimization:  optimization(),
   devServer: {
-    port: 4200,
-    hot: isDev
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
   },
   plugins: [
     new HTMLWebPackPlugin({

@@ -78,11 +78,12 @@ const cardBuilder = function (quantity, object) {
   table.innerHTML = tRow;
   div.appendChild(table);
 
-  //todo рандомно добавить дата атрибут к каждой карточке, а возможно и сделать такие аттрибуты парными
+  // рандомно добавили дата атрибут к каждой карточке
   const randomSetArray = randomArray(quantityCards);
+  console.log(randomSetArray)
   let indexOfArray = 0;
   table.querySelectorAll('th').forEach(item => {
-    item.dataset.value = `${randomSetArray}[${indexOfArray++}]`;
+    item.dataset.value = `${randomSetArray[indexOfArray++]}`;
   });
   return div.innerHTML;
 

@@ -7,7 +7,6 @@ export function randomArray(cards) {
   for (let i = 1; i <= length; i++) {
     setItems.push(i)
   }
-  console.log(setItems);
   while (randomSetArray.length < cards) {
     let index = setItems[random(setItems)];
     if (filterPairs(randomSetArray, index)) {
