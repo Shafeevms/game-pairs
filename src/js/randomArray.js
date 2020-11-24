@@ -4,7 +4,7 @@ export function randomArray(cards) {
   const setItems = [];
   const randomSetArray = [];
   const length = cards / 2;
-  for (let i = 1; i <= length; i++) {
+  for (let i = 1; i <= length; i++) { // спред...
     setItems.push(i)
   }
   while (randomSetArray.length < cards) {

@@ -7,10 +7,49 @@ const { resolve } = require('path');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
+const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
+
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const ASSET_PATH = process.env.ASSET_PATH || './';
+
+const open = require('open');
+const openChrome = async () => {
+  if (isProd) return;
+  await open('http://127.0.0.1:55555', {app: 'chrome'});
+  await open('http://127.0.0.1:55555', {app: 'google chrome'});
+};
+const plugins = () => {
+  const plugins = [
+    new HTMLWebPackPlugin({
+      template: './index.html'
+    }),
+    new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
+    }),
+    new MiniCssExtractPlugin({
+      filename: filename('css')
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, './src/pictures/cards'),
+          to: path.resolve(__dirname, './dist/pictures/cards')
+        },
+      ],
+    }),
+  ];
+  if (isDev) {
+    plugins.push(new Serve({
+      open: openChrome(),
+      static: path.resolve(__dirname, 'dist'),
+      host: '127.0.0.1'
+    }))
+  }
+  return plugins;
+}
 
 const optimization = () => {
   const config =  {
@@ -49,36 +88,15 @@ const cssLoaders = (extra) => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: ['@babel/polyfill', './index.js'],
+  entry: ['@babel/polyfill', './index.js', 'webpack-plugin-serve/client'],
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
     publicPath: ASSET_PATH,
   },
   optimization:  optimization(),
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000
-  },
-  plugins: [
-    new HTMLWebPackPlugin({
-      template: './index.html'
-    }),
-    new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
-    }),
-    new MiniCssExtractPlugin({
-      filename: filename('css')
-    }),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.resolve(__dirname, './src/pictures/cards'),
-    //     to: path.resolve(__dirname, './dist/pictures/cards')
-    //   }
-    // ])
-  ],
+  plugins: plugins(),
+  watch: isDev,
   module: {
     rules: [
       {

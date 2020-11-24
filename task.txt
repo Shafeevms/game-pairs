@@ -19,3 +19,4 @@
     console.log(table)
   }
 
+const filterPairs = (array, testElement) => array.filter(el => el === testElement).length === 2;

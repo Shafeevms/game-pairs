@@ -69,7 +69,7 @@ const cardBuilder = function (quantity, object) {
 
   let th = '';
   for (let i = 0; i < tableArray[1]; i++) {
-    th += `<th class="th"></th>`;
+    th += `<th class="th"><div class="card"><div class="front"></div><div class="back"></div></div></th>`;
   }
   let tRow = '';
   for (let i = 0; i < tableArray[0]; i++) {
@@ -82,14 +82,12 @@ const cardBuilder = function (quantity, object) {
   const randomSetArray = randomArray(quantityCards);
   const picsArray = chooseCards(PICSTODEAL, quantityCards);
   let indexOfArray = 0;
-  // добавляем картинки b дата атрибут к карточкам
-  table.querySelectorAll('th').forEach(item => {
+
+  // добавляем картинки и дата атрибут к карточкам
+  table.querySelectorAll('.back').forEach(item => {
     item.dataset.value = `${randomSetArray[indexOfArray++]}`;
     item.style.backgroundImage = `url('./pictures/cards/${picsArray[item.dataset.value - 1]}.jpg')`;
   });
-
-  console.log(picsArray);
-
 
   return div.innerHTML;
 
