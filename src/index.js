@@ -1,8 +1,8 @@
-import { randomArray } from './js/randomArray';
+import { randomArray, chooseCards } from './js/randomArray';
 import './css/style.css';
 
 'use strict';
-
+const PICSTODEAL = 8;
 let quantityCards;
 const element = document.querySelector('.modal__select');
 const cards = {
@@ -80,11 +80,17 @@ const cardBuilder = function (quantity, object) {
 
   // рандомно добавили дата атрибут к каждой карточке
   const randomSetArray = randomArray(quantityCards);
-  console.log(randomSetArray)
+  const picsArray = chooseCards(PICSTODEAL, quantityCards);
   let indexOfArray = 0;
+  // добавляем картинки b дата атрибут к карточкам
   table.querySelectorAll('th').forEach(item => {
     item.dataset.value = `${randomSetArray[indexOfArray++]}`;
+    item.style.backgroundImage = `url('./pictures/cards/${picsArray[item.dataset.value - 1]}.jpg')`;
   });
+
+  console.log(picsArray);
+
+
   return div.innerHTML;
 
 }

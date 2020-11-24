@@ -74,8 +74,8 @@ module.exports = {
     }),
     // new CopyWebpackPlugin([
     //   {
-    //     from: path.resolve(__dirname, ''),
-    //     to: path.resolve(__dirname, '')
+    //     from: path.resolve(__dirname, './src/pictures/cards'),
+    //     to: path.resolve(__dirname, './dist/pictures/cards')
     //   }
     // ])
   ],

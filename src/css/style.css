@@ -7,7 +7,7 @@ h2 {
 .body {
   margin: 0;
   padding: 10px;
-  background: url('../../pictures/background.jpg') no-repeat;
+  background: url('../pictures/background.jpg') no-repeat;
   background-size: cover;
 
 }
@@ -91,4 +91,5 @@ h2 {
   border: 1px solid rgb(241, 239, 88);
   border-radius: 5px;
   box-shadow: 15px 8px 13px 2px rgb(32, 29, 30);
+  background-size: cover;
 }

@@ -1,5 +1,5 @@
 'use strict'
-// функция готовит массив с необходимым количеством рандомных чисел по паре, располагая в разных частях массива
+//функция готовит массив с необходимым количеством рандомных чисел по паре, располагая в разных частях массива
 export function randomArray(cards) {
   const setItems = [];
   const randomSetArray = [];
@@ -29,3 +29,18 @@ const filterPairs = (array, element) => {
   }
   return false;
 }
+
+// функция выбирает, какие номера карточек будут рендериться, нужно знать количество карточек
+// в папке cards - переменная cardsToDeal;
+export const chooseCards = (picsToDeal, cards) => {
+  const array = [];
+  while(array.length !== cards / 2) {
+    let item = (Math.floor(Math.random() * picsToDeal + 1));
+    if (array.find(el => el === item) === item) {
+      continue;
+    }
+    array.push(item)
+  }
+  return array;
+}
+
