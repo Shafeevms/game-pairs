@@ -41,13 +41,13 @@ const plugins = () => {
       ],
     }),
   ];
-  if (isDev) {
-    plugins.push(new Serve({
-      open: openChrome(),
-      static: path.resolve(__dirname, 'dist'),
-      host: '127.0.0.1'
-    }))
-  }
+  // if (isDev) {
+  //   plugins.push(new Serve({
+  //     open: openChrome(),
+  //     static: path.resolve(__dirname, 'dist'),
+  //     host: '127.0.0.1'
+  //   }))
+  // }
   return plugins;
 }
 
@@ -72,10 +72,7 @@ const cssLoaders = (extra) => {
   const loaders = [
     {
       loader: MiniCssExtractPlugin.loader,
-      options: {
-        //hmr: isDev,
-        // reloadAll: true,
-      },
+      options: {},
     },
     'css-loader'
       ]
@@ -93,6 +90,14 @@ module.exports = {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
     publicPath: ASSET_PATH,
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    open: 'google chrome',
+    compress: true,
+    hot: true,
+    port: 3000
   },
   optimization:  optimization(),
   plugins: plugins(),
