@@ -22,13 +22,7 @@ export function randomArray(cards) {
  const random = array => Math.floor(Math.random() * array.length);
 
 // функция проверяет есть ли в массиве два одинаковых элемента, возвращает true или false
-const filterPairs = (array, element) => {
-  const elementsNumber = array.filter(el => el === element).length
-  if (elementsNumber === 2) {
-    return true;
-  }
-  return false;
-}
+export const filterPairs = (array, testElement) => array.filter(el => el === testElement).length === 2;
 
 // функция выбирает, какие номера карточек будут рендериться, нужно знать количество карточек
 // в папке cards - переменная cardsToDeal;

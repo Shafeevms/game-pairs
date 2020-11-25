@@ -1,9 +1,10 @@
 import { randomArray, chooseCards } from './js/randomArray';
+import { checkPair } from './js/rules';
 import './css/style.css';
 
 'use strict';
 const PICSTODEAL = 8;
-let quantityCards;
+export let quantityCards;
 const element = document.querySelector('.modal__select');
 const cards = {
   4: [2, 2],
@@ -90,10 +91,9 @@ const cardBuilder = function (quantity, object) {
   });
 
   return div.innerHTML;
-
 }
 
-
+checkPair();
 
 
 

@@ -20,3 +20,11 @@
   }
 
 const filterPairs = (array, testElement) => array.filter(el => el === testElement).length === 2;
+
+const filterPairs = (array, element) => {
+  const elementsNumber = array.filter(el => el === element).length
+  if (elementsNumber === 2) {
+    return true;
+  }
+  return false;
+}

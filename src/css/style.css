@@ -126,5 +126,11 @@ h2 {
   background-repeat: no-repeat;
   transform: rotateY(180deg);
 }
-.card:hover .front {transform: rotateY(180deg);}
-.card:hover .back {transform: rotateY(360deg);}
+/* .card:hover .front {transform: rotateY(180deg);}
+.card:hover .back {transform: rotateY(360deg);} */
+.rotate-front {
+  transform: rotateY(180deg);
+}
+.rotate-back {
+  transform: rotateY(360deg);
+}
