@@ -17,8 +17,8 @@ const ASSET_PATH = process.env.ASSET_PATH || './';
 const open = require('open');
 const openChrome = async () => {
   if (isProd) return;
-  await open('http://127.0.0.1:55555', {app: 'chrome'});
-  await open('http://127.0.0.1:55555', {app: 'google chrome'});
+  await open({app: 'chrome'});
+  await open({app: 'google chrome'});
 };
 const plugins = () => {
   const plugins = [

@@ -1,10 +1,12 @@
-import { randomArray, chooseCards } from './js/randomArray';
-import { checkPair } from './js/rules';
 import './css/style.css';
+import { randomArray, chooseCards } from './js/randomArray';
+export let quantityCards;
+import { checkPair } from './js/rules';
+
+
 
 'use strict';
 const PICSTODEAL = 8;
-export let quantityCards;
 const element = document.querySelector('.modal__select');
 const cards = {
   4: [2, 2],
@@ -37,7 +39,7 @@ const options = () => {
 }
 
 // Функция рендерит модальное окно
-function renderModal(string) {
+export function renderModal(string) {
 
   document.querySelector('.main').innerHTML = string;
 
@@ -54,8 +56,7 @@ document.body.addEventListener('submit', (ev) => {
   if (target.classList.contains('modal__form')) {
     quantityCards = document.querySelector('.modal__select').options[selected].value;
     target.parentNode.closest('.modal').remove();
-    renderModal(cardBuilder(quantityCards, cards))
-
+    renderModal(cardBuilder(quantityCards, cards));
 
   }
 })
@@ -95,10 +96,12 @@ const cardBuilder = function (quantity, object) {
 
 checkPair();
 
+document.querySelector('main').addEventListener('click', function(e) {
+  if (e.target.classList.contains('yes')) {
+    window.location.reload()
+  } else if (e.target.classList.contains('no')) console.log('bye')
 
-
-
-
+});
 
 
 

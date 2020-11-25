@@ -4,7 +4,7 @@ export function randomArray(cards) {
   const setItems = [];
   const randomSetArray = [];
   const length = cards / 2;
-  for (let i = 1; i <= length; i++) { // спред...
+  for (let i = 1; i <= length; i++) {
     setItems.push(i)
   }
   while (randomSetArray.length < cards) {
@@ -17,9 +17,6 @@ export function randomArray(cards) {
   }
   return randomSetArray;
  }
-
- // функция возвращает из массива рандомно ИНДЕКС
- const random = array => Math.floor(Math.random() * array.length);
 
 // функция проверяет есть ли в массиве два одинаковых элемента, возвращает true или false
 export const filterPairs = (array, testElement) => array.filter(el => el === testElement).length === 2;
@@ -38,3 +35,5 @@ export const chooseCards = (picsToDeal, cards) => {
   return array;
 }
 
+// функция возвращает из массива рандомно ИНДЕКС
+const random = array => Math.floor(Math.random() * array.length);

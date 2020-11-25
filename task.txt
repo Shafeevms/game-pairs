@@ -1,30 +1,13 @@
 модальное окно должно появляться с анимацией
 добавить шрифты РОБОТО
 сделать красивый выпадающий список;
+
 можно сделать сложность игры:
  - легкая, карты сначала показывают рубашки (только таймер)
  - сложная, карты сразу переворачиваются;
  - к таймеру добавляется ограничение по количеству ходов)
 
- webpack не переносит картинки
+если ответ на вопрос о "сыграть заново" - "НЕТ", запустить видео какое-то
 
+как запустить игру заново, без перезапуска окна?
 
-как в деструктуризацию параметрически засунуть значение
-
-// функция формирует карточки
-  const cardBuilder = function(quantity, object) {
-    const {quantity} = object
-
-    const table = object[quantity]
-    console.log(table)
-  }
-
-const filterPairs = (array, testElement) => array.filter(el => el === testElement).length === 2;
-
-const filterPairs = (array, element) => {
-  const elementsNumber = array.filter(el => el === element).length
-  if (elementsNumber === 2) {
-    return true;
-  }
-  return false;
-}
