@@ -14,7 +14,7 @@ export function timerGame(num) {
     num--;
     renderModal(num, 'timer__numbers');
     if (num === 0) {
-      clearInterval(timer);
+      window.clearInterval(timer);
       renderModal(modalLost, 'main');
       document.querySelector('.timer').style.display = 'none';
     }
