@@ -35,8 +35,8 @@ const plugins = () => {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, './src/pictures/cards'),
-          to: path.resolve(__dirname, './dist/pictures/cards')
+          from: path.resolve(__dirname, './src/pictures/'),
+          to: path.resolve(__dirname, './dist/pictures/')
         },
       ],
     }),

@@ -1,28 +1,28 @@
+import './css/fonts.css';
 import './css/style.css';
 import { randomArray, chooseCards } from './js/randomArray';
 export let quantityCards;
 import { checkPair } from './js/rules';
-
-
+import {PICSTODEAL, cards, level} from'./js/store';
+import { timerGame } from './js/timer';
 
 'use strict';
-const PICSTODEAL = 8;
-const element = document.querySelector('.modal__select');
-const cards = {
-  4: [2, 2],
-  8: [2, 4],
-  12: [3, 4],
-  16: [4, 4],
-}
+
 // функция формирует содержимое модельного окна
-const tempModalWindow = (options) => {
+const tempModalWindow = (cards, level) => {
   return `<div class="modal">
           <h2 class="modal__title">ИГРА ПАРЫ</h2>
           <form action="/" class="modal__form">
             <div class="madal__wrap">
               <span class="modal__choosetext">Выберете количество пар</span>
               <select class="modal__select" name="select" id="select">
-                ${options}
+                ${cards}
+              </select>
+            </div>
+            <div class="madal__wrap">
+              <span class="modal__choosetext">Выберете сложность</span>
+              <select class="modal__select" name="select" id="select">
+                ${level}
               </select>
             </div>
             <button class="modal__btn">Начать игру</button>
@@ -31,8 +31,8 @@ const tempModalWindow = (options) => {
 
 };
 // фукция формирует необходимое количество options
-const options = () => {
-  let listItems = Object.keys(cards).reduce((acc, item) => {
+const options = (obj) => {
+  let listItems = Object.keys(obj).reduce((acc, item) => {
     return acc += `<option class="modal__option" value="${item}">${item}</option>`
   }, '');
   return listItems;
@@ -45,7 +45,7 @@ export function renderModal(string) {
 
 }
 // запускаем рендер модального окна
-renderModal(tempModalWindow(options()));
+renderModal(tempModalWindow(options(cards), options(level)));
 
 // обработчик для модального окна
 document.body.addEventListener('submit', (ev) => {
@@ -107,3 +107,4 @@ document.querySelector('main').addEventListener('click', function(e) {
 
 
 
+timerGame(5)
