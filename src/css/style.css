@@ -151,8 +151,22 @@ button {
 /* timer */
 
 .timer {
+  display: none;
   position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgb(134, 17, 17);
+  box-shadow: 15px 8px 13px 2px rgb(32, 29, 30);
 }
-.wathes {
-  background: transparent;
+
+.timer__numbers {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 58px;
+  color: #fff;
+  transform: translateX(-50%) translateY(-50%);
 }

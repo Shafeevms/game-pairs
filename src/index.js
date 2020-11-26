@@ -7,7 +7,7 @@ import {PICSTODEAL, cards, level} from'./js/store';
 import { timerGame } from './js/timer';
 
 'use strict';
-
+let currentLevel = '';
 // функция формирует содержимое модельного окна
 const tempModalWindow = (cards, level) => {
   return `<div class="modal">
@@ -21,7 +21,7 @@ const tempModalWindow = (cards, level) => {
             </div>
             <div class="madal__wrap">
               <span class="modal__choosetext">Выберете сложность</span>
-              <select class="modal__select" name="select" id="select">
+              <select class="modal__select levelNow" name="select" id="select-level">
                 ${level}
               </select>
             </div>
@@ -39,24 +39,28 @@ const options = (obj) => {
 }
 
 // Функция рендерит модальное окно
-export function renderModal(string) {
+export function renderModal(string, selector) {
 
-  document.querySelector('.main').innerHTML = string;
+  document.querySelector(`.${selector}`).innerHTML = string;
 
 }
 // запускаем рендер модального окна
-renderModal(tempModalWindow(options(cards), options(level)));
+renderModal(tempModalWindow(options(cards), options(level)), 'main');
 
 // обработчик для модального окна
 document.body.addEventListener('submit', (ev) => {
   ev.preventDefault();
   const target = ev.target;
   const selected = document.querySelector('.modal__select').options.selectedIndex;
-
+  const selectedLevel = document.querySelector('.levelNow').options.selectedIndex;
   if (target.classList.contains('modal__form')) {
     quantityCards = document.querySelector('.modal__select').options[selected].value;
+    currentLevel = document.querySelector('.levelNow').options[selectedLevel].value;
     target.parentNode.closest('.modal').remove();
-    renderModal(cardBuilder(quantityCards, cards));
+    renderModal(cardBuilder(quantityCards, cards), 'main');
+    if (currentLevel === 'сложная') {
+      timerGame(quantityCards * 3);
+    }
 
   }
 })
@@ -99,12 +103,10 @@ checkPair();
 document.querySelector('main').addEventListener('click', function(e) {
   if (e.target.classList.contains('yes')) {
     window.location.reload()
-  } else if (e.target.classList.contains('no')) console.log('bye')
+  } else if (e.target.classList.contains('no')) {
+    document.location.href = "https://www.google.ru";
+  }
 
 });
 
 
-
-
-
-timerGame(5)

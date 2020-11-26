@@ -1,6 +1,7 @@
 import { filterPairs } from './randomArray';
 import { quantityCards, renderModal } from '../index';
 import { modalWin } from './templates';
+//import { timer } from './timer';
 let inProccess = 0;
 let checkArray = [];
 let score = 0;
@@ -15,7 +16,8 @@ const rotatecard = (e) => {
   }
   if (score === quantityCards / 2) {
     setTimeout(() => {
-      renderModal(modalWin)
+      renderModal(modalWin, 'main');
+//      clearInterval(timer);
     }, 1000)
 
   }

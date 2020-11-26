@@ -1,20 +1,24 @@
+import { renderModal } from '../index';
+import { modalLost } from '../js/templates';
+
 'use strict';
 
-let timer;
+export let timer;
 // функия запускает таймер обратного отсчета
 export function timerGame(num) {
+  document.querySelector('.timer').style.display = 'block';
+
   timer = setInterval(tick, 1000);
 
   function tick () {
     num--;
-    console.log(num);
+    renderModal(num, 'timer__numbers');
     if (num === 0) {
       clearInterval(timer);
-      return true;
+      renderModal(modalLost, 'main');
+      document.querySelector('.timer').style.display = 'none';
     }
   }
 
 }
-
-
 

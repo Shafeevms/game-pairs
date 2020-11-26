@@ -6,4 +6,13 @@ export const modalWin = ` <div class="modal">
                       <button class="modal__btn yes">ДА</button>
                       <button class="modal__btn no">НЕТ</button>
                     </div>
-                    </div>`
+                    </div>`;
+
+export const modalLost = ` <div class="modal">
+                          <h2 class="modal__title">Вы проиграли!</h2>
+                          <p>Сыграем еще раз?</p>
+                          <div class="modal__wrap">
+                            <button class="modal__btn yes">ДА</button>
+                            <button class="modal__btn no">НЕТ</button>
+                          </div>
+                          </div>`;
